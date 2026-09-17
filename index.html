@@ -84,5 +84,39 @@
     </tbody>
   </table>
 </section>
+<hr>
+
+<section>
+  <h2>Code Display: Minesweeper Recursion</h2>
+  <p>
+    The following Java snippet demonstrates the use of recursion to reveal clear tiles in the classic game Minesweeper. When an empty tile is clicked, it recursively checks adjacent tiles to auto-clear surrounding empty spaces.
+  </p>
+  <pre>
+public class Minesweeper {
+    public void revealTile(int row, int col, boolean[][] visited) {
+        if (row &lt; 0 || row &gt;= grid.length || col &lt; 0 || col &gt;= grid[0].length || visited[row][col]) {
+            return;
+        }
+
+        visited[row][col] = true;
+
+        if (countAdjacentMines(row, col) &gt; 0) {
+            return;
+        }
+
+        for (int dr = -1; dr &lt;= 1; dr++) {
+            for (int dc = -1; dc &lt;= 1; dc++) {
+                if (dr != 0 || dc != 0) {
+                    revealTile(row + dr, col + dc, visited);
+                }
+            }
+        }
+    }
+}
+  </pre>
+  <p>
+    Snippet Source: <a href="https://github.com/example/Minesweeper.java" target="_blank">Minesweeper Java Source Code</a>
+  </p>
+</section>
 </body>
 </html>
